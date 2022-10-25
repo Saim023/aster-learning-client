@@ -8,8 +8,8 @@ import Icon from '../../assets/logo/computer-icon-32-227917.png';
 const Header = () => {
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Container>
+            <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+                <Container className='navbar-bg'>
                     <Navbar.Brand href="#home"> <img src={Icon} alt="" /> Aster Learning</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">

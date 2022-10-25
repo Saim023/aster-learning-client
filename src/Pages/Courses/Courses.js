@@ -5,21 +5,23 @@ import Card from 'react-bootstrap/Card';
 import './Course.css';
 
 const Courses = ({ course }) => {
-    const { id, title, image, price } = course;
+    const { id, title, image, price, description, category, rating } = course;
+    console.log(course)
     return (
         <div>
-            <Card className="text-center">
+            <Card className="text-center shadow">
                 <Card.Header><h3>{title}</h3></Card.Header>
                 <Image className='course-image' src={image} alt="" ></Image>
 
                 <Card.Body>
-                    <Card.Title>Special title treatment</Card.Title>
+                    <Card.Title>Category: {category}</Card.Title>
                     <Card.Text>
-                        With supporting text below as a natural lead-in to additional content.
+                        {description.slice(0, 200)}
                     </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+                    <p>Price: <small className='price'>${price}</small></p>
+                    <Button variant="primary">Purchase Now</Button>
                 </Card.Body>
-                <Card.Footer className="text-muted">2 days ago</Card.Footer>
+                <Card.Footer className="text-muted"><small>Ratings: {rating}</small></Card.Footer>
             </Card>
         </div>
     );
