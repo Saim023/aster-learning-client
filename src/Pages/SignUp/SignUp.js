@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
@@ -63,9 +64,11 @@ const SignUp = () => {
                     <Form.Label>Enter Your Password</Form.Label>
                     <Form.Control name='password' type="password" placeholder="Password" required />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button className='me-3' variant="primary" type="submit">
                     Sign Up
                 </Button>
+
+                <span>Already have an account? <Link to='/login'>Login Now!</Link></span>
                 <div>
                     <Form.Text className="text-danger">
                         {error}

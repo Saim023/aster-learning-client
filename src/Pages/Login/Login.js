@@ -1,25 +1,34 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [error, setError] = useState('');
 
-    const { providerLogIn, signIn } = useContext(AuthContext);
+    const { providerLogIn, gitHubProviderLogin, signIn } = useContext(AuthContext);
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
     const googleProvider = new GoogleAuthProvider();
+    const GitHubProvider = new GithubAuthProvider();
 
     const handleLoginWithGoogle = () => {
         providerLogIn(googleProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user)
+            })
+            .catch(error => console.error(error))
+    }
+
+    const handleLogInWithGitHub = () => {
+        gitHubProviderLogin(GitHubProvider)
+            .then(result => {
+                const user = result.user;
             })
             .catch(error => console.error(error))
     }
@@ -57,9 +66,12 @@ const Login = () => {
                     <Form.Label>Enter Your Password</Form.Label>
                     <Form.Control name='password' type="password" placeholder="Password" />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button className='me-3' variant="primary" type="submit">
                     Login
                 </Button>
+
+                <span>Don't have account? <Link to='/signup'>Sign Up Now!</Link></span>
+
                 <div>
                     <Form.Text className="text-danger">
                         {error}
@@ -68,7 +80,7 @@ const Login = () => {
             </Form>
             <div>
                 <button className='mt-3 me-3' onClick={handleLoginWithGoogle}><FaGoogle></FaGoogle> Login With Google</button>
-                <button onClick={handleLoginWithGoogle}><FaGithub></FaGithub> Login With GitHub</button>
+                <button onClick={handleLogInWithGitHub}><FaGithub></FaGithub> Login With GitHub</button>
             </div>
         </div>
     );
