@@ -10,7 +10,7 @@ const CourseDetails = () => {
     console.log(course)
     return (
         <div>
-            <Card className="mt-5 text-center w-50 m-auto">
+            <Card className="mt-5 text-center w-50 m-auto shadow">
                 <Card.Body>
                     <Image className='course-image' src={course.image} alt="" ></Image>
                     <Card.Title>{course.title}</Card.Title>
