@@ -1,9 +1,9 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link, useLoaderData } from 'react-router-dom';
-import CourseDetails from '../../CourseDetails/CourseDetails';
 import Detail from '../../Detail/Detail';
 import './Course.css';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 const Courses = () => {
     const details = useLoaderData();
@@ -13,10 +13,12 @@ const Courses = () => {
             <Container>
                 <Row>
                     <Col lg="3">
-                        <h1>Title Link</h1>
-                        {
-                            details.map(detail => <ul key={detail.id} detail={detail}><li><Link to={`/course/${detail.id}`}>{detail.title}</Link></li></ul>)
-                        }
+                        <h3>Course Items</h3>
+                        <div className='list-items mt-3'>
+                            {
+                                details.map(detail => <ListGroup key={detail.id} detail={detail}><ListGroup.Item className='mb-3'><Link to={`/course/${detail.id}`}>{detail.id}. {detail.title}</Link></ListGroup.Item></ListGroup>)
+                            }
+                        </div>
                     </Col>
                     <Col lg="9">
                         <div className='detail-container'>
