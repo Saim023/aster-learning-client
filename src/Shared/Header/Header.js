@@ -5,9 +5,21 @@ import Navbar from 'react-bootstrap/Navbar';
 import './Header.css';
 import Icon from '../../assets/logo/computer-icon-32-227917.png';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { Button, Image } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { FaUser, FaMoon } from 'react-icons/fa';
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch(error => console.error(error))
+    }
+
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -23,12 +35,35 @@ const Header = () => {
 
                         </Nav>
                         <Nav>
-                            <Nav.Link><p>{user?.displayName}</p></Nav.Link>
-                            <Nav.Link href="/login">Login</Nav.Link>
-                            <Nav.Link href="/signup">Sign Up</Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes">
-                                Dark Theme
+                            <div>
+                                {
+                                    user?.uid
+                                        ?
+                                        <>
+                                            <span>Hello, {user?.displayName}</span>
+                                            <Button variant="light" onClick={handleLogOut}>Logout</Button>
+                                        </>
+                                        :
+                                        <>
+                                            <Button className='mr-2' variant="light" href="/login">Login</Button>
+                                            <Button variant="light" href="/signup">Sign Up</Button>
+                                        </>
+                                }
+                            </div>
+                            <Nav.Link>
+                                {user?.photoURL
+                                    ?
+                                    <Image style={{ height: "38px" }} roundedCircle src={user?.photoURL}></Image>
+                                    :
+                                    <FaUser></FaUser>
+                                }
                             </Nav.Link>
+                            {
+                                <Nav.Link eventKey={2} href="#memes">
+                                    <span><FaMoon></FaMoon></span>
+                                </Nav.Link>
+                            }
+
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
