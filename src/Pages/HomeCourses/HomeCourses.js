@@ -2,6 +2,7 @@ import React from 'react';
 import { Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 import './HomeCourses.css';
 
 const HomeCourses = ({ course }) => {
@@ -19,7 +20,7 @@ const HomeCourses = ({ course }) => {
                         {description.slice(0, 200)}
                     </Card.Text>
                     <p>Price: <small className='price'>${price}</small></p>
-                    <Button variant="primary">Purchase Now</Button>
+                    <button className='show-details-btn'><Link to={`/course/${id}`}>Purchase Now</Link></button>
                 </Card.Body>
                 <Card.Footer className="text-muted"><small>Ratings: {rating}</small></Card.Footer>
             </Card>

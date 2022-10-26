@@ -2,6 +2,8 @@ import React from 'react';
 import { Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
+import './Detail.css';
 
 const Detail = ({ detail }) => {
     const { title, image, rating, price, description } = detail;
@@ -17,8 +19,9 @@ const Detail = ({ detail }) => {
                     </Card.Text>
                     <p>Price: <small className='price'>${price}</small></p>
                 </Card.Body>
-                <Card.Footer className="text-muted">
-                    <Button variant="primary">Get premium access</Button></Card.Footer>
+                <Card.Footer className="text-muted detail-btn">
+                    <button className='me-5 show-details-btn'><Link to={`/course/${detail.id}`}>Show Details</Link></button>
+                </Card.Footer>
             </Card>
         </div>
     );

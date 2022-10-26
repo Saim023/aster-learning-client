@@ -12,3 +12,21 @@
 .price {
 	color: orangered;
 }
+.show-details-btn {
+	background-color: orange;
+	padding: 5px 15px;
+	border: none;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+}
+.show-details-btn a {
+	text-decoration: none;
+	color: black;
+	padding: 5px 15px;
+}
+.show-details-btn a:hover {
+	color: white;
+}
