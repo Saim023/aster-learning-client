@@ -1,28 +1,36 @@
 import React from 'react';
-import { Image } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { Col, Container, Row } from 'react-bootstrap';
+import { Link, useLoaderData } from 'react-router-dom';
+import CourseDetails from '../../CourseDetails/CourseDetails';
+import Detail from '../../Detail/Detail';
 import './Course.css';
 
-const Courses = ({ course }) => {
-    const { id, title, image, price, description, category, rating } = course;
-    console.log(course)
-    return (
-        <div>
-            <Card className="text-center shadow">
-                <Card.Header><h3>{title}</h3></Card.Header>
-                <Image className='course-image' src={image} alt="" ></Image>
+const Courses = () => {
+    const details = useLoaderData();
 
-                <Card.Body>
-                    <Card.Title>Category: {category}</Card.Title>
-                    <Card.Text>
-                        {description.slice(0, 200)}
-                    </Card.Text>
-                    <p>Price: <small className='price'>${price}</small></p>
-                    <Button variant="primary">Purchase Now</Button>
-                </Card.Body>
-                <Card.Footer className="text-muted"><small>Ratings: {rating}</small></Card.Footer>
-            </Card>
+    return (
+        <div className='mt-5'>
+            <Container>
+                <Row>
+                    <Col lg="3">
+                        <h1>Title Link</h1>
+                        {
+                            details.map(detail => <ul key={detail.id} detail={detail}><li><Link to={`/course/${detail.id}`}>{detail.title}</Link></li></ul>)
+                        }
+                    </Col>
+                    <Col lg="9">
+                        <div className='detail-container'>
+                            {
+                                details.map(detail => <Detail
+                                    key={detail.id}
+                                    detail={detail}
+                                ></Detail>)
+                            }
+                        </div>
+
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 };

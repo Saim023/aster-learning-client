@@ -9,7 +9,6 @@ const Main = () => {
     return (
         <div>
             <Header></Header>
-            <HomeCarousel></HomeCarousel>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>
