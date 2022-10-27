@@ -2,11 +2,12 @@ import React, { useContext } from 'react';
 
 import { Image } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const CheckOut = () => {
     const { user } = useContext(AuthContext);
+
     return (
         <div>
             <Card className="mt-5 text-center w-50 m-auto shadow">

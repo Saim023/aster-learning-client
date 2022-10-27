@@ -7,10 +7,12 @@ import Icon from '../../assets/logo/computer-icon-32-227917.png';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { FaUser, FaMoon } from 'react-icons/fa';
+import { FaUser, FaMoon, FaSun } from 'react-icons/fa';
+import { ThemeContext } from '../../App';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+    const { theme, toggleTheme } = useContext(ThemeContext);
 
     const handleLogOut = () => {
         logOut()
@@ -18,6 +20,10 @@ const Header = () => {
 
             })
             .catch(error => console.error(error))
+    }
+
+    const handleTheme = () => {
+        toggleTheme()
     }
 
     return (
@@ -59,12 +65,15 @@ const Header = () => {
                             <Nav.Link>
 
                             </Nav.Link>
-                            {
-                                <Nav.Link eventKey={2} href="#memes">
-                                    <span><FaMoon></FaMoon></span>
-                                </Nav.Link>
-                            }
-
+                            <Nav.Link eventKey={2} href="#memes">
+                                {
+                                    theme === "light"
+                                        ?
+                                        <span onClick={handleTheme}><FaMoon></FaMoon></span>
+                                        :
+                                        <span onClick={handleTheme}><FaSun></FaSun></span>
+                                }
+                            </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
