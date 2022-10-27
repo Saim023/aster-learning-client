@@ -4,10 +4,12 @@ import Card from 'react-bootstrap/Card';
 import { Link, useLoaderData } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 import './CourseDetails.css';
+import CheckOut from '../Pages/CheckOut/CheckOut';
 
 const CourseDetails = () => {
     const course = useLoaderData();
     console.log(course)
+
     return (
         <div>
             <Card className="mt-5 text-center w-50 m-auto shadow">
@@ -22,7 +24,7 @@ const CourseDetails = () => {
                 </Card.Body>
                 <Card.Footer className="text-muted course-detail-btn">
                     <button className='me-5 show-details-btn'><Link to='/courses'>Go Back To Courses</Link></button>
-                    <button className='me-5 show-details-btn'><Link>Get Premium Access</Link></button>
+                    <button className='me-5 show-details-btn'><Link to='/checkout'>Get Premium Access</Link></button>
                 </Card.Footer>
             </Card>
         </div>

@@ -1,10 +1,12 @@
 import React from 'react';
+import { FaCopyright } from 'react-icons/fa';
+import './Footer.css';
 
 const Footer = () => {
     return (
-        <div>
-            <h1>Footer Area</h1>
-        </div>
+        <footer className='footer'>
+            <span><FaCopyright></FaCopyright> Copyright Aster Learning Platform || 2022</span>
+        </footer>
     );
 };
 

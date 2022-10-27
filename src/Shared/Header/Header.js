@@ -40,8 +40,14 @@ const Header = () => {
                                     user?.uid
                                         ?
                                         <>
-                                            <span>Hello, {user?.displayName}</span>
-                                            <Button variant="light" onClick={handleLogOut}>Logout</Button>
+                                            <span className='me-2'>Hello, {user?.displayName}</span>
+                                            {user?.photoURL
+                                                ?
+                                                <Image style={{ height: "38px" }} roundedCircle src={user?.photoURL}></Image>
+                                                :
+                                                <FaUser></FaUser>
+                                            }
+                                            <Button className='ms-3' variant="light" onClick={handleLogOut}>Logout</Button>
                                         </>
                                         :
                                         <>
@@ -51,12 +57,7 @@ const Header = () => {
                                 }
                             </div>
                             <Nav.Link>
-                                {user?.photoURL
-                                    ?
-                                    <Image style={{ height: "38px" }} roundedCircle src={user?.photoURL}></Image>
-                                    :
-                                    <FaUser></FaUser>
-                                }
+
                             </Nav.Link>
                             {
                                 <Nav.Link eventKey={2} href="#memes">
