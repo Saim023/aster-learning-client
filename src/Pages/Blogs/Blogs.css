@@ -1,0 +1,7 @@
+/* smaller-device */
+
+@media screen and (max-width: 576px) {
+	.blogs {
+		width: 100%;
+	}
+}

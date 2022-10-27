@@ -27,17 +27,17 @@ const Header = () => {
     }
 
     return (
-        <div>
+        <div className='nav-items'>
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Container className='navbar-bg'>
                     <Navbar.Brand href="/"> <img src={Icon} alt="" /> Aster Learning</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/courses">Courses</Nav.Link>
-                            <Nav.Link href="#pricing">Blog</Nav.Link>
-                            <Nav.Link href="#pricing">FAQ</Nav.Link>
+                            <Link to="/">Home</Link>
+                            <Link to="/courses">Courses</Link>
+                            <Link to="/blogs">Blogs</Link>
+                            <Link to="/faq">FAQ</Link>
 
                         </Nav>
                         <Nav>
@@ -53,7 +53,7 @@ const Header = () => {
                                                 :
                                                 <FaUser></FaUser>
                                             }
-                                            <Button className='ms-3' variant="light" onClick={handleLogOut}>Logout</Button>
+                                            <Button className='ms-3 me-3' variant="light" onClick={handleLogOut}>Logout</Button>
                                         </>
                                         :
                                         <>
@@ -62,10 +62,7 @@ const Header = () => {
                                         </>
                                 }
                             </div>
-                            <Nav.Link>
-
-                            </Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes">
+                            <Link eventKey={2} href="#memes">
                                 {
                                     theme === "light"
                                         ?
@@ -73,7 +70,7 @@ const Header = () => {
                                         :
                                         <span onClick={handleTheme}><FaSun></FaSun></span>
                                 }
-                            </Nav.Link>
+                            </Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

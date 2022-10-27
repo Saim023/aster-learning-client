@@ -6,3 +6,12 @@
 .list-items a {
 	text-decoration: none;
 }
+
+/* smaller-device */
+
+@media screen and (max-width: 576px) {
+	.detail-container {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+	}
+}

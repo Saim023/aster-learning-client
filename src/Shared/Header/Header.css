@@ -5,10 +5,8 @@
 .navbar-bg a:hover {
 	color: orange;
 }
-/* .menu-icon button span {
-	color: white;
-} */
-/* 
-.navbar-toggler-icon {
-	background-color: rgb(200, 228, 231);
-} */
+
+.nav-items a {
+	text-decoration: none;
+	margin-right: 15px;
+}
